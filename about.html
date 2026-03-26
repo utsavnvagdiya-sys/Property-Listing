@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us – Grandview Realty</title>
+  <meta name="description" content="Learn about Grandview Realty – our story, mission, values and the expert team behind your perfect home search."/>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    .page-hero {
+      background: var(--classic-bg);
+      color: var(--classic-dark);
+      text-align: center;
+      padding: 160px 40px 100px;
+      border-bottom: 1px solid var(--classic-border);
+      position: relative;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 1px;
+      background: var(--classic-accent);
+    }
+    .page-hero .eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--classic-accent);
+      font-weight: 700;
+      margin-bottom: 20px;
+      font-family: 'Inter', sans-serif;
+    }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+      color: var(--classic-dark);
+    }
+    .page-hero p {
+      font-size: 16px;
+      color: var(--classic-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+      font-family: 'Lora', serif;
+    }
+
+    /* Story */
+    .story-section {
+      max-width: 1200px;
+      margin: 100px auto;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .story-img {
+      border-radius: 4px;
+      overflow: hidden;
+      height: 500px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+    }
+    .story-img img { width:100%;height:100%;object-fit:cover; }
+    .story-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4vw, 44px);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+      color: var(--classic-dark);
+    }
+    .story-text p {
+      font-size: 15px;
+      color: var(--classic-muted);
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+    .story-nums {
+      display: flex;
+      gap: 40px;
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 1px solid var(--classic-border);
+    }
+    .story-num-item .num { 
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 500;
+      color: var(--classic-accent);
+      margin-bottom: 5px;
+    }
+    .story-num-item .lbl { 
+      font-size:10px;
+      color: var(--classic-muted);
+      font-weight:700;
+      letter-spacing:0.15em;
+      text-transform:uppercase; 
+    }
+
+    /* Values */
+    .values-section {
+      background: #1a1a17;
+      padding: 120px 40px;
+      color: #fff;
+    }
+    .values-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
+    .values-inner .section-title { color: #fff; margin-bottom: 60px; }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+    .value-card {
+      background: rgba(255,255,255,0.03);
+      border-radius: 4px;
+      padding: 48px 32px;
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: all 0.4s;
+      text-align: left;
+    }
+    .value-card:hover { 
+      background: rgba(255,255,255,0.05);
+      border-color: var(--classic-accent);
+      transform: translateY(-8px); 
+    }
+    .value-icon { font-size: 24px; color: var(--classic-accent); margin-bottom: 24px; }
+    .value-card h4 { 
+      font-family: 'Playfair Display', serif;
+      font-size:20px;
+      font-weight:500;
+      color:#fff;
+      margin-bottom:16px; 
+    }
+    .value-card p { font-size:13px;color:#999;line-height:1.8; }
+
+    /* Team */
+    .team-section {
+      max-width: 1200px;
+      margin: 120px auto;
+      padding: 0 40px;
+      text-align: center;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-top: 60px;
+    }
+    .team-card {
+      background: #fff;
+      border: 1px solid var(--classic-border);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: all 0.4s;
+    }
+    .team-card:hover { 
+      transform: translateY(-10px); 
+      box-shadow: 0 20px 50px rgba(0,0,0,0.08); 
+      border-color: var(--classic-accent);
+    }
+    .team-photo {
+      height: 380px;
+      overflow: hidden;
+    }
+    .team-info { padding: 24px; text-align: left; }
+    .team-info h4 { 
+      font-family: 'Playfair Display', serif;
+      font-size:18px;
+      font-weight:500;
+      color: var(--classic-dark);
+      margin-bottom: 6px; 
+    }
+    .team-info .role { 
+      font-size:11px;
+      color: var(--classic-accent);
+      font-weight:700;
+      letter-spacing:.1em;
+      text-transform: uppercase;
+      margin-bottom:15px; 
+    }
+    .team-socials a { font-size:14px;color: var(--classic-border);transition:color 0.3s; }
+    .team-socials a:hover { color: var(--classic-dark); }
+
+    /* Mission banner */
+    .mission-banner {
+      background: var(--classic-bg);
+      color: var(--classic-dark);
+      text-align: center;
+      padding: 140px 40px;
+      border-top: 1px solid var(--classic-border);
+    }
+    .mission-banner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: -0.02em;
+      max-width: 900px;
+      margin: 0 auto 32px;
+      line-height: 1.2;
+    }
+    .mission-banner p { 
+      font-family: 'Lora', serif;
+      font-size:18px;
+      color: var(--classic-muted);
+      max-width:600px;
+      margin:0 auto 48px;
+      line-height:1.8; 
+    }
+    .mission-banner a {
+      display: inline-flex; align-items:center; gap:12px;
+      padding: 18px 48px;
+      background: var(--classic-dark);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      transition: all 0.3s;
+    }
+    .mission-banner a:hover { background: var(--classic-accent); transform: translateY(-3px); }
+
+    @media (max-width: 900px) {
+      .story-section { grid-template-columns:1fr; }
+      .values-grid { grid-template-columns:1fr 1fr; }
+      .team-grid { grid-template-columns:1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <i class="fa-solid fa-building-columns"></i>
+        <span>GRANDVIEW <strong>REALTY</strong></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Apartments</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="help.html">Help</a></li>
+        <li><a href="about.html" class="active">About us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+      <a href="property.html" class="btn-signin">Sign in</a>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <p class="eyebrow">Who We Are</p>
+    <h1>About Grandview Realty</h1>
+    <p>For over 15 years we've been connecting people with properties they love. Here's our story.</p>
+  </section>
+
+  <!-- STORY -->
+  <div class="story-section">
+    <div class="story-img">
+      <img src="hero.png" alt="Our office and team"/>
+    </div>
+    <div class="story-text">
+      <p class="section-eyebrow">OUR STORY</p>
+      <h2>Built on Trust & Excellence</h2>
+      <p>Grandview Realty was founded in 2010 by a group of passionate property professionals who believed that finding a home should be an exciting, transparent, and empowering experience — not a stressful one.</p>
+      <p>What started as a small boutique agency with 5 agents has grown into one of the country's most trusted real estate platforms, with over 50,000 active listings, 10,000+ happy clients, and a team of 200+ dedicated property experts nationwide.</p>
+      <p>Our commitment to integrity, innovation, and exceptional service has earned us a 4.9/5 client satisfaction rating — and we're just getting started.</p>
+      <div class="story-nums">
+        <div class="story-num-item"><div class="num">50K+</div><div class="lbl">Listings</div></div>
+        <div class="story-num-item"><div class="num">10K+</div><div class="lbl">Clients</div></div>
+        <div class="story-num-item"><div class="num">200+</div><div class="lbl">Agents</div></div>
+        <div class="story-num-item"><div class="num">15 Yrs</div><div class="lbl">Experience</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VALUES -->
+  <section class="values-section">
+    <div class="values-inner">
+      <p class="section-eyebrow">WHAT DRIVES US</p>
+      <h2 class="section-title">Our Core Values</h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon"><i class="fa-solid fa-handshake"></i></div>
+          <h4>Integrity</h4>
+          <p>We operate with full transparency. No hidden fees, no misleading listings — what you see is what you get.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><i class="fa-solid fa-users"></i></div>
+          <h4>Client First</h4>
+          <p>Every decision we make is guided by what is best for our clients. Your goals are our goals.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><i class="fa-solid fa-lightbulb"></i></div>
+          <h4>Innovation</h4>
+          <p>We invest in technology and data to make the property search smart, fast and effortless.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><i class="fa-solid fa-award"></i></div>
+          <h4>Excellence</h4>
+          <p>From photography to legal support — every touchpoint is held to the highest standard of quality.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="team-section">
+    <p class="section-eyebrow">THE PEOPLE BEHIND IT</p>
+    <h2 class="section-title">Meet Our Team</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800&h=1200" alt="Eleanor Vance"/></div>
+        <div class="team-info">
+          <h4>Eleanor Vance</h4>
+          <div class="role">CEO & Founder</div>
+          <div class="team-socials">
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800&h=1200" alt="Sarah Mitchell"/></div>
+        <div class="team-info">
+          <h4>Sarah Mitchell</h4>
+          <div class="role">Head of Sales</div>
+          <div class="team-socials">
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=800&h=1200" alt="Eliza Chen"/></div>
+        <div class="team-info">
+          <h4>Eliza Chen</h4>
+          <div class="role">Chief Technology Officer</div>
+          <div class="team-socials">
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=800&h=1200" alt="Priya Sharma"/></div>
+        <div class="team-info">
+          <h4>Priya Sharma</h4>
+          <div class="role">Head of Client Relations</div>
+          <div class="team-socials">
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION BANNER -->
+  <section class="mission-banner">
+    <h2>"Our mission is to make finding your perfect home as simple as it should be."</h2>
+    <p>Join over 10,000 clients who found their dream property with Grandview Realty.</p>
+    <a href="index.html"><i class="fa-solid fa-arrow-right"></i> Browse Properties</a>
+  </section>
+
+  <!-- FOOTER MAP -->
+  <section class="footer-top-map">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.67327375263!2d-74.11976378411139!3d40.69767006764516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+      allowfullscreen="" loading="lazy">
+    </iframe>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo"><i class="fa-solid fa-building-columns"></i><span>GRANDVIEW <strong>REALTY</strong></span></div>
+        <p>Your trusted partner in finding the perfect home.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Apartments</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">info@grandviewrealty.com</a></li>
+          <li><a href="#">+1 (800) 123-4567</a></li>
+          <li><a href="#">123 Main Street, New York</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2026 Grandview Realty. All rights reserved.</p></div>
+  </footer>
+
+</body>
+</html>

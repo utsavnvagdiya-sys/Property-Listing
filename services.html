@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services – Grandview Realty</title>
+  <meta name="description" content="Explore Grandview Realty's full range of property services – buying, selling, renting, property management and valuations."/>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    .page-hero {
+      background: #fdfdfb;
+      color: #111;
+      text-align: center;
+      padding: 160px 40px 100px;
+      border-bottom: 1px solid #e2e2da;
+      position: relative;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 1px;
+      background: #c9a84d;
+    }
+    .page-hero .eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #c9a84d;
+      font-weight: 700;
+      margin-bottom: 20px;
+      font-family: 'Inter', sans-serif;
+    }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+      color: #111;
+    }
+    .page-hero p {
+      font-size: 16px;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+      font-family: 'Lora', serif;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      max-width: 1200px;
+      margin: -40px auto 100px;
+      padding: 0 40px;
+      position: relative;
+      z-index: 10;
+    }
+    .service-card {
+      background: #fff;
+      border: 1px solid #e2e2da;
+      border-radius: 4px;
+      padding: 48px 36px;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: #c9a84d;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+      border-color: #c9a84d;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      border: 1px solid #c9a84d;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #c9a84d;
+      font-size: 18px;
+      margin-bottom: 32px;
+      background: transparent;
+    }
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 500;
+      color: #111;
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+    .service-card p {
+      font-family: 'Lora', serif;
+      font-size: 14px;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+    .service-link {
+      font-size: 11px;
+      font-weight: 700;
+      color: #c9a84d;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      transition: gap 0.3s;
+    }
+    .service-link:hover { gap: 15px; }
+
+    .process-section {
+      background: #1a1a17;
+      color: #fff;
+      padding: 120px 40px;
+      text-align: center;
+      position: relative;
+    }
+    .process-section .section-eyebrow { 
+      color: #c9a84d; 
+      font-size: 10px; 
+      letter-spacing: 0.3em;
+      margin-bottom: 20px;
+    }
+    .process-section .section-title { 
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 400;
+      color: #fff; 
+      margin-bottom: 70px; 
+      letter-spacing: -0.01em;
+    }
+    .steps-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .step-num {
+      width: 44px;
+      height: 44px;
+      border: 1px solid #c9a84d;
+      border-radius: 50%;
+      background: transparent;
+      color: #c9a84d;
+      font-size: 14px;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+    }
+    .step h4 { 
+      font-family: 'Playfair Display', serif;
+      font-size: 18px; 
+      font-weight: 500; 
+      color: #fff; 
+    }
+    .step p { 
+      font-family: 'Lora', serif;
+      font-size: 13px; 
+      color: #999; 
+      line-height: 1.7; 
+      max-width: 180px; 
+    }
+
+    .cta-section {
+      text-align: center;
+      padding: 120px 40px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+      color: #111;
+    }
+    .cta-section p { 
+      font-family: 'Lora', serif;
+      font-size: 16px; 
+      color: #666; 
+      margin-bottom: 40px; 
+      line-height: 1.8; 
+    }
+    .cta-btns { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+    .cta-btns .btn-dark {
+      padding: 16px 40px;
+      background: #1a1a17;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+    .cta-btns .btn-dark:hover { background: #c9a84d; transform: translateY(-2px); }
+    .cta-btns .btn-light {
+      padding: 16px 40px;
+      background: transparent;
+      color: #111;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 4px;
+      border: 1px solid #e2e2da;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+    .cta-btns .btn-light:hover { border-color: #c9a84d; color: #c9a84d; transform: translateY(-2px); }
+
+    @media (max-width: 768px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .steps-row { flex-direction: column; gap: 24px; }
+      .steps-row::before { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <i class="fa-solid fa-building-columns"></i>
+        <span>GRANDVIEW <strong>REALTY</strong></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Apartments</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="help.html">Help</a></li>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+      <a href="property.html" class="btn-signin">Sign in</a>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <p class="eyebrow">What We Offer</p>
+    <h1>Our Services</h1>
+    <p>From buying your dream home to managing your investment portfolio — we cover every step of your real estate journey.</p>
+  </section>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-key"></i></div>
+      <h3>Property Buying</h3>
+      <p>We guide you through every step of purchasing a property — from shortlisting to legal paperwork and final handover. Our experts negotiate the best deals on your behalf.</p>
+      <a href="#" class="service-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-tag"></i></div>
+      <h3>Property Selling</h3>
+      <p>Get maximum value for your property. We provide professional photography, marketing across 50+ platforms, and connect you with verified buyers fast.</p>
+      <a href="#" class="service-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-house"></i></div>
+      <h3>Rentals</h3>
+      <p>Whether you're a tenant searching for the perfect flat or a landlord listing your property, we handle the entire rental process seamlessly and transparently.</p>
+      <a href="#" class="service-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-chart-line"></i></div>
+      <h3>Property Valuation</h3>
+      <p>Get an accurate, market-aligned valuation for your property based on real-time data, comparable sales, and expert assessment by our certified valuers.</p>
+      <a href="#" class="service-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+      <h3>Property Management</h3>
+      <p>Hand over the day-to-day management of your rental property to us. We handle tenant relations, maintenance, rent collection and reporting.</p>
+      <a href="#" class="service-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-file-contract"></i></div>
+      <h3>Legal & Mortgages</h3>
+      <p>Access our network of trusted solicitors and mortgage advisors who will make the legal and financial side of property transactions stress-free.</p>
+      <a href="#" class="service-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+
+  <section class="process-section">
+    <p class="section-eyebrow">HOW IT WORKS</p>
+    <h2 class="section-title">Simple 4-Step Process</h2>
+    <div class="steps-row">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Browse Listings</h4>
+        <p>Search our curated database of properties</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Book a Viewing</h4>
+        <p>Visit the property at your convenience</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Make an Offer</h4>
+        <p>We negotiate and handle paperwork</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h4>Move In</h4>
+        <p>Collect your keys and enjoy your new home</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-section">
+    <h2>Ready to Get Started?</h2>
+    <p>Our team of experts is ready to help you find or sell your perfect property. Get in touch today for a free consultation.</p>
+    <div class="cta-btns">
+      <a href="index.html" class="btn-dark">Browse Properties</a>
+      <a href="help.html" class="btn-light">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- FOOTER MAP -->
+  <section class="footer-top-map">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.67327375263!2d-74.11976378411139!3d40.69767006764516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+      allowfullscreen="" loading="lazy">
+    </iframe>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo"><i class="fa-solid fa-building-columns"></i><span>GRANDVIEW <strong>REALTY</strong></span></div>
+        <p>Your trusted partner in finding the perfect home.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Apartments</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">info@grandviewrealty.com</a></li>
+          <li><a href="#">+1 (800) 123-4567</a></li>
+          <li><a href="#">123 Main Street, New York</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2026 Grandview Realty. All rights reserved.</p></div>
+  </footer>
+
+</body>
+</html>

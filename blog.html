@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog – Grandview Realty</title>
+  <meta name="description" content="Read the latest real estate news, buying guides, market insights and property tips from the Grandview Realty team."/>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    .page-hero {
+      background: var(--classic-bg);
+      color: var(--classic-dark);
+      text-align: center;
+      padding: 160px 40px 100px;
+      border-bottom: 1px solid var(--classic-border);
+      position: relative;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 1px;
+      background: var(--classic-accent);
+    }
+    .page-hero .eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--classic-accent);
+      font-weight: 700;
+      margin-bottom: 20px;
+      font-family: 'Inter', sans-serif;
+    }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+      color: var(--classic-dark);
+    }
+    .page-hero p {
+      font-size: 16px;
+      color: var(--classic-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+      font-family: 'Lora', serif;
+    }
+
+    /* Category Tabs */
+    .cat-tabs {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 60px auto 0;
+      padding: 0 40px;
+    }
+    .cat-tab {
+      padding: 10px 24px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      border: 1px solid var(--classic-border);
+      color: var(--classic-muted);
+      background: #fff;
+      transition: all 0.3s;
+      text-transform: uppercase;
+    }
+    .cat-tab.active, .cat-tab:hover {
+      background: var(--classic-dark); color: #fff; border-color: var(--classic-dark);
+    }
+
+    /* Blog Grid */
+    .blog-section {
+      max-width: 1200px;
+      margin: 60px auto 120px;
+      padding: 0 40px;
+    }
+
+    /* Featured post */
+    .blog-featured {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 0;
+      background: #fff;
+      border: 1px solid var(--classic-border);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 60px;
+      transition: all 0.4s;
+    }
+    .blog-featured:hover { 
+      transform: translateY(-8px);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.06); 
+      border-color: var(--classic-accent);
+    }
+    .blog-feat-img { overflow: hidden; height: 500px; }
+    .blog-feat-img img { width:100%;height:100%;object-fit:cover;transition:transform 0.6s; }
+    .blog-featured:hover .blog-feat-img img { transform: scale(1.04); }
+    .blog-feat-body {
+      padding: 60px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .post-category {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--classic-accent);
+      margin-bottom: 20px;
+    }
+    .blog-feat-body h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 500;
+      color: var(--classic-dark);
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+    .blog-feat-body p { 
+      font-family: 'Lora', serif;
+      font-size:15px;
+      color: var(--classic-muted);
+      line-height:1.8;
+      margin-bottom:32px; 
+    }
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 24px;
+      font-size: 11px;
+      color: var(--classic-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .post-meta span { display:flex;align-items:center;gap:8px; }
+    .read-more {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--classic-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      transition: gap 0.3s;
+    }
+    .read-more:hover { gap: 18px; color: var(--classic-accent); }
+
+    /* Blog card grid */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .blog-card {
+      background: #fff;
+      border: 1px solid var(--classic-border);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    .blog-card:hover { 
+      transform: translateY(-10px); 
+      box-shadow: 0 20px 50px rgba(0,0,0,0.08); 
+      border-color: var(--classic-accent);
+    }
+    .blog-card-img { height: 240px; overflow: hidden; }
+    .blog-card-img img { width:100%;height:100%;object-fit:cover;transition:transform 0.4s; }
+    .blog-card-body { padding: 32px; }
+    .blog-card-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--classic-dark);
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+    .blog-card-body p { 
+      font-family: 'Lora', serif;
+      font-size:14px;
+      color: var(--classic-muted);
+      line-height:1.7;
+      margin-bottom:24px; 
+    }
+
+    /* Newsletter */
+    .newsletter-section {
+      background: #1a1a17;
+      color: #fff;
+      padding: 120px 40px;
+      text-align: center;
+    }
+    .newsletter-section .eyebrow { color: var(--classic-accent); margin-bottom: 24px; }
+    .newsletter-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    .newsletter-section p { font-size:16px; color: #999; margin-bottom:48px; }
+    .newsletter-form {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+    .newsletter-form input {
+      flex: 1;
+      padding: 18px 24px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.1);
+      outline: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #fff;
+      background: rgba(255,255,255,0.05);
+    }
+    .newsletter-form button {
+      padding: 18px 40px;
+      background: var(--classic-accent);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      transition: all 0.3s;
+    }
+    .newsletter-form button:hover { background: #fff; color: var(--classic-dark); transform: translateY(-3px); }
+
+    @media (max-width: 900px) {
+      .blog-featured { grid-template-columns:1fr; }
+      .blog-grid { grid-template-columns:1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <i class="fa-solid fa-building-columns"></i>
+        <span>GRANDVIEW <strong>REALTY</strong></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Apartments</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="help.html">Help</a></li>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+      </ul>
+      <a href="property.html" class="btn-signin">Sign in</a>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <p class="eyebrow">Insights & Guides</p>
+    <h1>Our Blog</h1>
+    <p>Expert property advice, market reports, and lifestyle guides to help you make smarter real estate decisions.</p>
+  </section>
+
+  <!-- CATEGORY TABS -->
+  <div class="cat-tabs">
+    <div class="cat-tab active">All</div>
+    <div class="cat-tab">Buying</div>
+    <div class="cat-tab">Renting</div>
+    <div class="cat-tab">Selling</div>
+    <div class="cat-tab">Market Trends</div>
+    <div class="cat-tab">Interior Design</div>
+    <div class="cat-tab">Investment</div>
+  </div>
+
+  <div class="blog-section">
+
+    <!-- FEATURED POST -->
+    <div class="blog-featured">
+      <div class="blog-feat-img">
+        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=1200" alt="Featured Blog Post"/>
+      </div>
+      <div class="blog-feat-body">
+        <div class="post-category">MARKET TRENDS</div>
+        <h2>2026 Property Market Outlook: What Buyers Need to Know</h2>
+        <div class="post-meta">
+          <span><i class="fa-regular fa-calendar"></i> March 20, 2026</span>
+          <span><i class="fa-regular fa-clock"></i> 8 min read</span>
+        </div>
+        <p>After a turbulent few years, the property market is showing signs of stabilisation. We break down the key trends, price movements, and what this means if you're planning to buy, sell or invest in 2026.</p>
+        <a href="#" class="read-more">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- POST GRID -->
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?auto=format&fit=crop&q=80&w=800" alt="First time buying"/></div>
+        <div class="blog-card-body">
+          <div class="post-category">BUYING</div>
+          <h3>The First-Time Buyer's Complete Checklist for 2026</h3>
+          <p>Everything you need to know before signing on the dotted line — from mortgage approval to final inspection.</p>
+          <div class="post-meta">
+            <span><i class="fa-regular fa-calendar"></i> Mar 15, 2026</span>
+            <span><i class="fa-regular fa-clock"></i> 6 min</span>
+          </div>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?auto=format&fit=crop&q=80&w=800" alt="Rental guide"/></div>
+        <div class="blog-card-body">
+          <div class="post-category">RENTING</div>
+          <h3>How to Negotiate Your Rent Like a Pro</h3>
+          <p>Most people don't know that rent is negotiable. Here's how to approach the conversation with your landlord and win.</p>
+          <div class="post-meta">
+            <span><i class="fa-regular fa-calendar"></i> Mar 10, 2026</span>
+            <span><i class="fa-regular fa-clock"></i> 4 min</span>
+          </div>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800" alt="Interior design"/></div>
+        <div class="blog-card-body">
+          <div class="post-category">INTERIOR DESIGN</div>
+          <h3>10 Ways to Increase Your Property's Value Before Selling</h3>
+          <p>Small targeted investments in staging, lighting and fixtures can dramatically boost your selling price. Here's exactly what to focus on.</p>
+          <div class="post-meta">
+            <span><i class="fa-regular fa-calendar"></i> Mar 5, 2026</span>
+            <span><i class="fa-regular fa-clock"></i> 5 min</span>
+          </div>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800" alt="Investment guide"/></div>
+        <div class="blog-card-body">
+          <div class="post-category">INVESTMENT</div>
+          <h3>Buy-to-Let in 2026: Is It Still Worth It?</h3>
+          <p>With mortgage rates shifting and rental demand at record highs, we analyse whether buy-to-let remains a smart investment.</p>
+          <div class="post-meta">
+            <span><i class="fa-regular fa-calendar"></i> Feb 28, 2026</span>
+            <span><i class="fa-regular fa-clock"></i> 7 min</span>
+          </div>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800" alt="Selling guide"/></div>
+        <div class="blog-card-body">
+          <div class="post-category">SELLING</div>
+          <h3>How to Sell Your Home Faster — Agent Tips</h3>
+          <p>Our top agents share the insider secrets that consistently help properties sell in under 30 days, even in a slow market.</p>
+          <div class="post-meta">
+            <span><i class="fa-regular fa-calendar"></i> Feb 20, 2026</span>
+            <span><i class="fa-regular fa-clock"></i> 5 min</span>
+          </div>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-card-img"><img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86?auto=format&fit=crop&q=80&w=800" alt="Moving guide"/></div>
+        <div class="blog-card-body">
+          <div class="post-category">RENTING</div>
+          <h3>Moving to a New City? 7 Things to Check Before Renting</h3>
+          <p>Beyond the square footage — the overlooked factors that can make or break your experience in a new rental property.</p>
+          <div class="post-meta">
+            <span><i class="fa-regular fa-calendar"></i> Feb 14, 2026</span>
+            <span><i class="fa-regular fa-clock"></i> 4 min</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter-section">
+    <p class="eyebrow">STAY INFORMED</p>
+    <h2>Get Property Insights in Your Inbox</h2>
+    <p>Join 5,000+ subscribers who get our weekly market reports and buying tips</p>
+    <div class="newsletter-form">
+      <input type="email" id="nl-email" placeholder="Your email address"/>
+      <button onclick="subscribeNewsletter()">Subscribe <i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </section>
+
+  <!-- FOOTER MAP -->
+  <section class="footer-top-map">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.67327375263!2d-74.11976378411139!3d40.69767006764516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+      allowfullscreen="" loading="lazy">
+    </iframe>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo"><i class="fa-solid fa-building-columns"></i><span>GRANDVIEW <strong>REALTY</strong></span></div>
+        <p>Your trusted partner in finding the perfect home.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Apartments</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">info@grandviewrealty.com</a></li>
+          <li><a href="#">+1 (800) 123-4567</a></li>
+          <li><a href="#">123 Main Street, New York</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2026 Grandview Realty. All rights reserved.</p></div>
+  </footer>
+
+  <script>
+    // Category tabs
+    document.querySelectorAll('.cat-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+    // Newsletter
+    function subscribeNewsletter() {
+      const email = document.getElementById('nl-email').value.trim();
+      if (!email || !email.includes('@')) { alert('Please enter a valid email.'); return; }
+      const t = document.createElement('div');
+      t.style.cssText = 'position:fixed;bottom:30px;right:30px;background:#111;color:#fff;padding:14px 22px;border-radius:8px;font-family:Inter,sans-serif;font-size:14px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,0.2);z-index:999;';
+      t.textContent = '✓ Subscribed! Welcome to the Grandview community.';
+      document.body.appendChild(t);
+      setTimeout(() => t.remove(), 3000);
+      document.getElementById('nl-email').value = '';
+    }
+  </script>
+
+</body>
+</html>

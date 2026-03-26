@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Property – Grandview Realty</title>
+  <meta name="description" content="List your property on Grandview Realty and reach thousands of potential buyers and renters."/>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    .add-page {
+      max-width: 700px;
+      margin: 140px auto 100px;
+      padding: 60px;
+      background: #fff;
+      border: 1px solid var(--classic-border);
+      border-radius: 4px;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.05);
+    }
+    .add-page h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 400;
+      color: var(--classic-dark);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .add-page .sub {
+      font-family: 'Lora', serif;
+      font-size: 15px;
+      color: var(--classic-muted);
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .form-group { margin-bottom: 28px; }
+    .form-group label {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--classic-muted);
+      margin-bottom: 12px;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 16px 20px;
+      border: 1.5px solid var(--classic-border);
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--classic-dark);
+      outline: none;
+      transition: all 0.3s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--classic-accent);
+      box-shadow: 0 0 0 4px rgba(201, 168, 77, 0.05);
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .submit-btn {
+      width: 100%;
+      padding: 20px;
+      background: var(--classic-dark);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 20px;
+    }
+    .submit-btn:hover {
+      background: var(--classic-accent);
+      transform: translateY(-3px);
+    }
+    @media (max-width: 600px) {
+      .add-page { padding: 40px 24px; margin: 100px 20px 60px; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="logo">
+        <i class="fa-solid fa-building-columns"></i>
+        <span>GRANDVIEW <strong>REALTY</strong></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Apartments</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="help.html">Help</a></li>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+      <a href="#" class="btn-signin">Sign in</a>
+    </div>
+  </nav>
+
+  <!-- ADD PROPERTY FORM -->
+  <div class="add-page">
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#999;margin-bottom:28px;transition:color 0.2s;" onmouseover="this.style.color='#111'" onmouseout="this.style.color='#999'">
+      <i class="fa-solid fa-arrow-left"></i> Back to listings
+    </a>
+
+    <h2>List a Property</h2>
+    <p class="sub">Fill in the details below to add your property to our listings.</p>
+
+    <div class="form-group">
+      <label>Property Title *</label>
+      <input type="text" id="title" placeholder="e.g. Modern 2BHK Apartment"/>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Price ($/month) *</label>
+        <input type="number" id="price" placeholder="e.g. 450"/>
+      </div>
+      <div class="form-group">
+        <label>Listing Type</label>
+        <select id="badge">
+          <option value="FOR RENT">For Rent</option>
+          <option value="FOR SALE">For Sale</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Full Address *</label>
+      <input type="text" id="location" placeholder="e.g. 22 Elm Street, New York"/>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Property Type</label>
+        <select id="type">
+          <option value="Apartment">Apartment</option>
+          <option value="House">House</option>
+          <option value="Studio">Studio</option>
+          <option value="Villa">Villa</option>
+          <option value="Commercial">Commercial</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Area (sq ft)</label>
+        <input type="text" id="area" placeholder="e.g. 1,200"/>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Bedrooms</label>
+        <select id="beds">
+          <option>1</option><option>2</option><option>3</option>
+          <option>4</option><option>5</option><option>6+</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Bathrooms</label>
+        <select id="baths">
+          <option>1</option><option>2</option><option>3</option>
+          <option>4</option><option>5+</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Image URL (optional)</label>
+      <input type="url" id="image" placeholder="https://... or leave blank for default"/>
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea id="description" placeholder="Describe the property – features, neighbourhood, unique highlights..."></textarea>
+    </div>
+
+    <button class="submit-btn" onclick="addProperty()">
+      <i class="fa-solid fa-plus"></i> &nbsp;Add Property Listing
+    </button>
+  </div>
+
+  <!-- FOOTER MAP -->
+  <section class="footer-top-map">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.67327375263!2d-74.11976378411139!3d40.69767006764516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+      allowfullscreen="" loading="lazy">
+    </iframe>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">
+          <i class="fa-solid fa-building-columns"></i>
+          <span>GRANDVIEW <strong>REALTY</strong></span>
+        </div>
+        <p>Your trusted partner in finding the perfect home.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Apartments</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">About Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">info@grandviewrealty.com</a></li>
+          <li><a href="#">+1 (800) 123-4567</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Grandview Realty. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
